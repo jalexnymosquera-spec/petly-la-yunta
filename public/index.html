@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petly | Tienda de Mascotas La Yunta - Toledo, Norte de Santander</title>
+    <!-- Tipografía moderna y equilibrada (Plus Jakarta Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <style>
+        /* =========================================================================
+           PALETA DE COLORES EXACTA SELECCIONADA (#697E50 y #F9DC5C)
+           ========================================================================= */
+        :root {
+            /* Escala de Verdes de la Imagen 1 */
+           --green-primary: #2D5A30;
+            --green-dark: #204222;
+            --green-deeper: #173019;
+            --green-deepest: #0F2110;
+            --green-muted: #859864;
+            --green-soft: #A4B17B;
+            --green-pale: #C3CA92;
+            --green-tint: #F4F6EFE6;
+
+            /* Escala de Amarillos de la Imagen 2 */
+            --yellow-naples: #ffe262;
+            --yellow-jasmine: #FAE588;
+            --yellow-vanilla: #FCEFB4;
+            --yellow-chiffon: #FDF4CB;
+            --yellow-cornsilk: #FDF8E1;
+
+            --bg-body: #FAFBF8;
+            --text-dark: #20331B;
+            --text-secondary: #526048;
+            --radius-card: 16px;
+            --radius-btn: 10px;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Barra de Navegación --- */
+        .navbar-petly {
+            background-color: #ffffff;
+            border-bottom: 2px solid rgba(105, 126, 80, 0.18);
+            box-shadow: 0 4px 20px rgba(32, 51, 27, 0.05);
+            padding: 0.75rem 0;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .brand-title {
+            font-weight: 800;
+            font-size: 1.65rem;
+            color: var(--green-deeper);
+            line-height: 1.05;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.72rem;
+            color: var(--green-primary);
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .nav-link-petly {
+            color: var(--text-dark) !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.55rem 1rem !important;
+            border-radius: var(--radius-btn);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-link-petly:hover,
+        .nav-link-petly.active {
+            color: var(--green-deeper) !important;
+            background-color: rgba(164, 177, 123, 0.22);
+        }
+
+        /* --- Botones con la nueva paleta --- */
+        .btn-petly-green {
+            background-color: var(--green-primary);
+            color: #ffffff;
+            font-weight: 600;
+            border-radius: var(--radius-btn);
+            padding: 0.6rem 1.35rem;
+            border: 1px solid var(--green-primary);
+            transition: all 0.2s ease;
+        }
+
+        .btn-petly-green:hover {
+            background-color: var(--green-dark);
+            border-color: var(--green-dark);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(78, 101, 61, 0.25);
+        }
+
+        .btn-petly-yellow {
+            background-color: var(--yellow-naples);
+            color: var(--green-deepest);
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            padding: 0.6rem 1.35rem;
+            border: 1px solid #edd05a;
+            transition: all 0.2s ease;
+        }
+
+        .btn-petly-yellow:hover {
+            background-color: var(--yellow-jasmine);
+            color: var(--green-deepest);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(249, 220, 92, 0.4);
+        }
+
+        .btn-outline-petly {
+            border: 1.5px solid var(--green-primary);
+            background-color: #ffffff;
+            color: var(--green-dark);
+            font-weight: 600;
+            border-radius: var(--radius-btn);
+            padding: 0.5rem 1.15rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline-petly:hover,
+        .btn-outline-petly.active {
+            background-color: var(--green-primary);
+            border-color: var(--green-primary);
+            color: #ffffff;
+        }
+
+        .btn-cart-header {
+            background-color: var(--yellow-cornsilk);
+            border: 1.5px solid var(--yellow-naples);
+            color: var(--green-deepest);
+            font-weight: 700;
+            border-radius: var(--radius-btn);
+            padding: 0.5rem 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-cart-header:hover {
+            background-color: var(--yellow-vanilla);
+        }
+
+        /* --- Sistema de Vistas por Apartado --- */
+        .vista-apartado {
+            display: none;
+            animation: fadeIn 0.28s ease-out;
+            flex: 1;
+        }
+
+        .vista-apartado.activa {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Portada Principal Equilibrada --- */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--green-deeper) 0%, var(--green-primary) 100%);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 3.2rem 2.8rem;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(53, 76, 43, 0.16);
+            border-bottom: 5px solid var(--yellow-naples);
+        }
+
+        .hero-tag {
+            background-color: rgba(249, 220, 92, 0.18);
+            color: var(--yellow-naples);
+            border: 1px solid rgba(249, 220, 92, 0.5);
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-feature-box {
+            background: rgba(255, 255, 255, 0.96);
+            color: var(--text-dark);
+            border-radius: var(--radius-card);
+            padding: 1.6rem;
+            border-top: 4px solid var(--yellow-naples);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* --- Tarjetas de Productos --- */
+        .product-card {
+            background: #ffffff;
+            border-radius: var(--radius-card);
+            border: 1px solid rgba(105, 126, 80, 0.18);
+            box-shadow: 0 4px 14px rgba(32, 51, 27, 0.04);
+            transition: all 0.25s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--green-primary);
+            box-shadow: 0 12px 26px rgba(78, 101, 61, 0.12);
+        }
+
+        .product-img-wrapper {
+            height: 175px;
+            background: linear-gradient(180deg, var(--yellow-cornsilk) 0%, #ffffff 100%);
+            border-bottom: 1px solid rgba(105, 126, 80, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .badge-promo {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: var(--yellow-naples);
+            color: var(--green-deepest);
+            font-weight: 700;
+            padding: 0.28rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .badge-bestseller {
+            position: absolute;
+            bottom: 10px;
+            left: 12px;
+            background-color: var(--green-primary);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 0.22rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+        }
+
+        .badge-stock {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #ffffff;
+            color: var(--green-deeper);
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.74rem;
+            border: 1px solid rgba(105, 126, 80, 0.28);
+        }
+
+        .price-current {
+            font-size: 1.28rem;
+            font-weight: 800;
+            color: var(--green-deeper);
+        }
+
+        .price-old {
+            font-size: 0.86rem;
+            text-decoration: line-through;
+            color: #8c9683;
+            margin-right: 6px;
+        }
+
+        /* --- Selector de Cantidad (- 1 +) --- */
+        .qty-selector {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f4f6f0;
+            border: 1px solid rgba(105, 126, 80, 0.3);
+            border-radius: 8px;
+            padding: 2px 4px;
+        }
+
+        .qty-btn {
+            background: #ffffff;
+            border: 1px solid rgba(105, 126, 80, 0.2);
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: var(--green-deeper);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .qty-btn:hover {
+            background: var(--yellow-naples);
+            border-color: var(--yellow-naples);
+        }
+
+        .qty-input {
+            width: 34px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text-dark);
+        }
+
+        .qty-input:focus {
+            outline: none;
+        }
+
+        /* --- Campos de Formulario con Íconos Personalizados --- */
+        .custom-input-group {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border: 1.5px solid rgba(105, 126, 80, 0.35);
+            border-radius: 10px;
+            padding: 0.3rem 0.7rem;
+            transition: all 0.2s ease;
+        }
+
+        .custom-input-group:focus-within {
+            border-color: var(--green-primary);
+            box-shadow: 0 0 0 3px rgba(249, 220, 92, 0.35);
+        }
+
+        .custom-input-icon {
+            width: 34px;
+            height: 34px;
+            background-color: var(--yellow-cornsilk);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+            color: var(--green-deeper);
+        }
+
+        .custom-input-group input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            font-weight: 500;
+            color: var(--text-dark);
+            padding: 0.35rem 0;
+        }
+
+        .custom-input-group input:focus {
+            outline: none;
+        }
+
+        /* --- Footer --- */
+        .footer-petly {
+            background-color: var(--green-deepest);
+            color: #d8dfd2;
+            padding: 2.5rem 0 1.8rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--yellow-naples);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================================================
+         1. BARRA DE NAVEGACIÓN SUPERIOR
+         ========================================================================= -->
+    <nav class="navbar navbar-expand-lg navbar-petly sticky-top">
+        <div class="container">
+            <!-- Logotipo con la Huella + Perro y Gato en tonos #697E50 y #A4B17B -->
+            <a class="brand-logo" onclick="cambiarVista('inicio')">
+                <svg width="50" height="50" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="26" cy="52" rx="12" ry="16" transform="rotate(-20 26 52)" fill="#697E50"/>
+                    <ellipse cx="47" cy="30" rx="12" ry="16" transform="rotate(-6 47 30)" fill="#697E50"/>
+                    <ellipse cx="74" cy="30" rx="12" ry="16" transform="rotate(6 74 30)" fill="#697E50"/>
+                    <ellipse cx="95" cy="52" rx="12" ry="16" transform="rotate(20 95 52)" fill="#697E50"/>
+                    <!-- Silueta izquierda: Perro -->
+                    <path d="M58 52 C48 52 44 62 38 74 C33 84 36 98 48 98 L62 98 C56 94 56 82 59 74 C61 68 58 63 63 59 C66 56 64 52 58 52 Z" fill="#A4B17B"/>
+                    <!-- Silueta derecha: Gato -->
+                    <path d="M68 57 L64 63 C59 66 59 73 61 79 C63 86 62 92 57 92 C54 92 53 89 55 87 C51 87 49 91 51 95 C53 98 58 98 66 98 L75 98 C86 98 89 86 84 76 C80 68 78 63 75 56 L71 60 Z" fill="#4E653D"/>
+                </svg>
+                <div>
+                    <h1 class="brand-title">Petly</h1>
+                    <span class="brand-subtitle">Tienda de Mascotas La Yunta</span>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPetly">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuPetly">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-petly active" id="nav-inicio" onclick="cambiarVista('inicio')">
+                            <i class="bi bi-house-door me-1"></i>Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-petly" id="nav-catalogo" onclick="cambiarVista('catalogo')">
+                            <i class="bi bi-grid me-1"></i>Catálogo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-petly" id="nav-citas" onclick="cambiarVista('citas')">
+                            <i class="bi bi-calendar2-check me-1"></i>Agendar Cita
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-petly" id="nav-nosotros" onclick="cambiarVista('nosotros')">
+                            <i class="bi bi-shop me-1"></i>Sobre La Yunta
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn-cart-header" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        <i class="bi bi-cart3 fs-5" style="color: var(--green-deeper);"></i>
+                        <span>Carrito</span>
+                        <span id="contadorCarrito" class="badge rounded-pill" style="background-color: var(--green-primary); color: #fff;">0</span>
+                    </button>
+
+                    <button id="btnCuentaUsuario" class="btn btn-petly-green" data-bs-toggle="modal" data-bs-target="#modalAuth">
+                        <i class="bi bi-person-circle me-1"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor para mensajes de confirmación -->
+    <div id="contenedorAlertas" class="container mt-3"></div>
+
+    <!-- =========================================================================
+         APARTADO 1: INICIO (HERO + PROMOCIONES Y MEJORES VENTAS DEL MES)
+         ========================================================================= -->
+    <main id="vista-inicio" class="vista-apartado activa">
+        <div class="container">
+            <!-- Portada Principal -->
+            <div class="hero-banner">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-7">
+                        <span class="hero-tag">
+                            <i class="bi bi-geo-alt-fill"></i> Toledo, Norte de Santander
+                        </span>
+                        <h2 class="display-6 fw-bold mb-3">
+                            Nutrición, bienestar y cuidado profesional para tu mascota en <span style="color: var(--yellow-naples);">La Yunta</span>
+                        </h2>
+                        <p class="lead mb-4 opacity-90" style="font-size: 1.08rem;">
+                            Explora nuestro catálogo de alimentos y accesorios con disponibilidad en tiempo real o programa tu cita de peluquería y atención veterinaria.
+                        </p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <button onclick="cambiarVista('catalogo')" class="btn btn-petly-yellow btn-lg">
+                                <i class="bi bi-bag-check-fill me-2"></i>Ver Catálogo
+                            </button>
+                            <button onclick="cambiarVista('citas')" class="btn btn-outline-light btn-lg fw-semibold">
+                                <i class="bi bi-calendar2-plus me-2"></i>Agendar Cita
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="hero-feature-box">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h6 class="fw-bold mb-0" style="color: var(--green-deeper);">Servicios en Tienda La Yunta</h6>
+                                <span class="badge" style="background: var(--yellow-vanilla); color: var(--green-deepest);">Atención Diaria</span>
+                            </div>
+                            <div class="d-grid gap-3">
+                                <div class="d-flex align-items-center gap-3 p-2 rounded-3" style="background: var(--bg-body);" role="button" onclick="cambiarVista('catalogo')">
+                                    <div class="p-2 rounded-3 text-white" style="background: var(--green-primary);">
+                                        <i class="bi bi-box-seam fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bold small">Tienda y Concentrados</div>
+                                        <small class="text-muted">Alimentos, higiene, accesorios y suplementos</small>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto text-muted"></i>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 p-2 rounded-3" style="background: var(--bg-body);" role="button" onclick="cambiarVista('citas')">
+                                    <div class="p-2 rounded-3" style="background: var(--yellow-naples); color: var(--green-deepest);">
+                                        <i class="bi bi-scissors fs-4"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bold small">Peluquería y Consulta Veterinaria</div>
+                                        <small class="text-muted">Reserva tu horario sin filas en Toledo</small>
+                                    </div>
+                                    <i class="bi bi-chevron-right ms-auto text-muted"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN DE INICIO: PROMOCIONES Y MEJORES VENTAS DEL MES -->
+            <div class="py-5">
+                <div class="row align-items-end justify-content-between mb-4 g-3">
+                    <div class="col-md-7">
+                        <span class="text-uppercase fw-bold small" style="color: var(--green-primary); letter-spacing: 0.8px;">
+                            Destacados de La Yunta
+                        </span>
+                        <h3 class="fw-bold mb-0" style="color: var(--green-deepest);">Promociones y Mejores Ventas del Mes</h3>
+                    </div>
+                    <!-- Selector rápido entre Todos los Destacados, Promociones y Más Vendidos -->
+                    <div class="col-md-5 d-flex justify-content-md-end gap-2" id="tabsDestacadosInicio">
+                        <button class="btn btn-outline-petly btn-sm active" onclick="filtrarInicio('todos', this)">
+                            Destacados
+                        </button>
+                        <button class="btn btn-outline-petly btn-sm" onclick="filtrarInicio('promociones', this)">
+                            <i class="bi bi-tag-fill me-1"></i>Promociones
+                        </button>
+                        <button class="btn btn-outline-petly btn-sm" onclick="filtrarInicio('mas_vendidos', this)">
+                            <i class="bi bi-graph-up-arrow me-1"></i>Más Vendidos
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de Promociones / Mejores Ventas del Mes -->
+                <div class="row g-4" id="contenedorDestacadosInicio"></div>
+
+                <div class="text-center mt-4 pt-2">
+                    <button onclick="cambiarVista('catalogo')" class="btn btn-outline-petly">
+                        Explorar todo el catálogo de productos <i class="bi bi-arrow-right ms-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- =========================================================================
+         APARTADO 2: CATÁLOGO COMPLETO DE PRODUCTOS (VISTA INDEPENDIENTE)
+         ========================================================================= -->
+    <section id="vista-catalogo" class="vista-apartado py-4">
+        <div class="container">
+            <div class="p-4 rounded-4 mb-4 bg-white shadow-sm" style="border-left: 5px solid var(--green-primary);">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-6">
+                        <h2 class="fw-bold mb-1" style="color: var(--green-deepest);">Catálogo de Productos</h2>
+                        <p class="mb-0 text-muted small">Selecciona la cantidad deseada en cada producto antes de agregarlo al carrito.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="custom-input-group">
+                            <div class="custom-input-icon">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <input type="text" id="inputBuscador" placeholder="Buscar por nombre o descripción (ej. concentrado, champú, gato)...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros por Categoría -->
+            <div class="d-flex flex-wrap gap-2 mb-4" id="filtrosCategorias">
+                <button class="btn btn-outline-petly active" data-categoria="todas">Todos</button>
+                <button class="btn btn-outline-petly" data-categoria="promociones">En Promoción</button>
+                <button class="btn btn-outline-petly" data-categoria="mas_vendidos">Mejores Ventas</button>
+                <button class="btn btn-outline-petly" data-categoria="1">Alimentos y Concentrados</button>
+                <button class="btn btn-outline-petly" data-categoria="2">Higiene y Cuidado</button>
+                <button class="btn btn-outline-petly" data-categoria="3">Accesorios y Juguetes</button>
+                <button class="btn btn-outline-petly" data-categoria="4">Salud y Bienestar</button>
+            </div>
+
+            <div class="row g-4" id="contenedorProductos"></div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         APARTADO 3: AGENDAMIENTO DE CITAS Y SERVICIOS (VISTA INDEPENDIENTE)
+         ========================================================================= -->
+    <section id="vista-citas" class="vista-apartado py-4">
+        <div class="container">
+            <div class="mb-4">
+                <span class="text-uppercase fw-bold small" style="color: var(--green-primary);">Servicios Profesionales</span>
+                <h2 class="fw-bold" style="color: var(--green-deepest);">Peluquería y Atención Veterinaria</h2>
+                <p class="text-muted">Programa tu cita en línea en La Yunta. Nuestro sistema verifica la disponibilidad de horario.</p>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-md-6">
+                    <div class="p-4 bg-white rounded-4 h-100 shadow-sm" style="border-top: 4px solid var(--green-primary);">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge" style="background: rgba(105, 126, 80, 0.15); color: var(--green-deeper);">
+                                <i class="bi bi-scissors me-1"></i> Peluquería Canina y Felina
+                            </span>
+                            <span class="fw-bold" style="color: var(--green-deeper);">Desde $38.000 COP</span>
+                        </div>
+                        <h5 class="fw-bold mt-2">Baño General, Corte y Estética</h5>
+                        <p class="text-muted small mb-0">
+                            Incluye baño con productos dermatológicos, secado profesional, corte higiénico o de raza, limpieza de oídos y corte de uñas.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 bg-white rounded-4 h-100 shadow-sm" style="border-top: 4px solid var(--yellow-naples);">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge" style="background: var(--yellow-vanilla); color: var(--green-deepest);">
+                                <i class="bi bi-heart-pulse me-1"></i> Atención Veterinaria
+                            </span>
+                            <span class="fw-bold" style="color: var(--green-deeper);">Desde $35.000 COP</span>
+                        </div>
+                        <h5 class="fw-bold mt-2">Consulta General, Vacunación y Desparasitación</h5>
+                        <p class="text-muted small mb-0">
+                            Valoración general de salud, control de peso y aplicación de biológicos. <strong>Importante:</strong> El propietario debe presentar el carnet físico de la mascota.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario de Reserva de Cita -->
+            <div class="p-4 p-md-5 bg-white rounded-4 shadow-sm border">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <h4 class="fw-bold" style="color: var(--green-deeper);">Formulario de Reserva</h4>
+                        <p class="text-muted small">
+                            Diligencia los datos básicos de tu mascota y selecciona la fecha y hora.
+                        </p>
+                        <div class="p-3 rounded-3" style="background: var(--yellow-cornsilk); border-left: 4px solid var(--yellow-naples);">
+                            <div class="fw-bold small mb-1" style="color: var(--green-deepest);">
+                                <i class="bi bi-info-circle-fill me-1"></i> Requisito en tienda:
+                            </div>
+                            <small class="text-muted">Recuerda llevar el carnet de vacunación o historial físico de tu mascota el día de la atención.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <form id="formAgendarCita" class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small">Nombre de la Mascota *</label>
+                                <input type="text" id="citaNombreMascota" class="form-control" placeholder="Ej: Max, Luna, Toby" required>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-semibold small">Especie *</label>
+                                <select id="citaEspecie" class="form-select" required>
+                                    <option value="Perro">Perro</option>
+                                    <option value="Gato">Gato</option>
+                                    <option value="Ave">Ave</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label fw-semibold small">Tamaño *</label>
+                                <select id="citaTamano" class="form-select" required>
+                                    <option value="Pequeno">Pequeño</option>
+                                    <option value="Mediano" selected>Mediano</option>
+                                    <option value="Grande">Grande</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label fw-semibold small">Servicio Requerido *</label>
+                                <select id="citaServicio" class="form-select" required>
+                                    <option value="">Selecciona un servicio...</option>
+                                    <option value="1">Baño General y Peluquería Canina ($40.000 COP)</option>
+                                    <option value="2">Baño Especial y Cepillado Felino ($38.000 COP)</option>
+                                    <option value="3">Consulta Veterinaria General ($45.000 COP)</option>
+                                    <option value="4">Jornada de Vacunación y Desparasitación ($35.000 COP)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small">Fecha *</label>
+                                <input type="date" id="citaFecha" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small">Hora Disponible *</label>
+                                <select id="citaHora" class="form-select" required>
+                                    <option value="">Selecciona hora...</option>
+                                    <option value="08:00:00">08:00 AM</option>
+                                    <option value="09:00:00">09:00 AM</option>
+                                    <option value="10:00:00">10:00 AM</option>
+                                    <option value="11:00:00">11:00 AM</option>
+                                    <option value="14:00:00">02:00 PM</option>
+                                    <option value="15:00:00">03:00 PM</option>
+                                    <option value="16:00:00">04:00 PM</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label fw-semibold small">Observaciones o motivo de la cita (Opcional)</label>
+                                <textarea id="citaNotas" class="form-control" rows="2" placeholder="Indica cualquier detalle relevante sobre el cuidado de tu mascota..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-petly-green w-100 py-2">
+                                    <i class="bi bi-calendar-check me-2"></i>Confirmar Cita
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         APARTADO 4: SOBRE LA YUNTA (VISTA INDEPENDIENTE)
+         ========================================================================= -->
+    <section id="vista-nosotros" class="vista-apartado py-4">
+        <div class="container">
+            <div class="p-4 p-md-5 bg-white rounded-4 shadow-sm border">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-7">
+                        <span class="badge mb-2" style="background: var(--yellow-vanilla); color: var(--green-deepest);">
+                            <i class="bi bi-shop me-1"></i> Nuestra Tienda en Toledo
+                        </span>
+                        <h2 class="fw-bold mb-3" style="color: var(--green-deepest);">Tienda de Mascotas La Yunta</h2>
+                        <p class="text-muted">
+                            Ubicada en el municipio de <strong>Toledo, Norte de Santander</strong>, <strong>La Yunta</strong> es un espacio dedicado a proveer alimentación balanceada, artículos de cuidado e higiene, accesorios de calidad y servicios de peluquería y consulta veterinaria.
+                        </p>
+                        <div class="row g-3 mt-2">
+                            <div class="col-sm-6">
+                                <div class="p-3 rounded-3 h-100" style="background: var(--bg-body); border: 1px solid rgba(105, 126, 80, 0.2);">
+                                    <h6 class="fw-bold mb-1" style="color: var(--green-deeper);"><i class="bi bi-geo-alt-fill me-1"></i> Ubicación</h6>
+                                    <p class="small text-muted mb-0">Toledo, Norte de Santander, Colombia.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="p-3 rounded-3 h-100" style="background: var(--bg-body); border: 1px solid rgba(105, 126, 80, 0.2);">
+                                    <h6 class="fw-bold mb-1" style="color: var(--green-deeper);"><i class="bi bi-clock-fill me-1"></i> Horario de Atención</h6>
+                                    <p class="small text-muted mb-0">Lunes a Sábado: 8:00 AM - 12:00 PM y 2:00 PM - 6:00 PM.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="p-4 rounded-4 text-center" style="background: var(--yellow-cornsilk); border: 1px solid var(--yellow-naples);">
+                            <h5 class="fw-bold mb-2" style="color: var(--green-deepest);">Plataforma Digital Petly</h5>
+                            <p class="small text-muted mb-3">
+                                Consulta existencias en tiempo real, arma tu pedido o separa tu turno de atención desde casa.
+                            </p>
+                            <div class="d-grid gap-2">
+                                <button onclick="cambiarVista('catalogo')" class="btn btn-petly-green">Ir al Catálogo</button>
+                                <button onclick="cambiarVista('citas')" class="btn btn-petly-yellow">Programar una Cita</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         PIE DE PÁGINA (FOOTER)
+         ========================================================================= -->
+    <footer class="footer-petly">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <h6 class="text-white fw-bold mb-1">Petly — Tienda de Mascotas La Yunta</h6>
+                <small class=" opacity-75">Toledo, Norte de Santander, Colombia • &copy; 2026 Todos los derechos reservados.</small>
+            </div>
+            <a href="admin/dashboard.html" class="btn btn-sm btn-petly-yellow">
+                <i class="bi bi-shield-lock-fill me-1"></i> Panel Administrativo
+            </a>
+        </div>
+    </footer>
+
+    <!-- =========================================================================
+         MODAL 1: FICHA INDIVIDUAL DEL PRODUCTO
+         ========================================================================= -->
+    <div class="modal fade" id="modalDetalleProducto" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 overflow-hidden">
+                <div class="modal-header text-white border-0" style="background-color: var(--green-primary);">
+                    <h5 class="modal-title fw-bold" id="detalleTitulo">Ficha del Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4" id="detalleCuerpo"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         MODAL 2: CARRITO DE COMPRAS
+         ========================================================================= -->
+    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 overflow-hidden">
+                <div class="modal-header text-white border-0" style="background-color: var(--green-primary);">
+                    <h5 class="modal-title fw-bold">
+                        <i class="bi bi-cart3 me-2"></i>Carrito de Compras — La Yunta
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <div id="listaCarrito"></div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="text-muted fw-bold">Total del Pedido:</span>
+                        <span id="totalCarrito" class="fs-3 fw-bold" style="color: var(--green-deeper);">$0 COP</span>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light border-0">
+                    <button type="button" class="btn btn-outline-petly" data-bs-dismiss="modal">Seguir comprando</button>
+                    <button type="button" id="btnProcesarPedido" class="btn btn-petly-yellow">
+                        <i class="bi bi-check2-circle me-1"></i> Confirmar Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         MODAL 3: INICIAR SESIÓN Y CREAR CUENTA (CON ÍCONO @ GATO DE IMAGEN 2)
+         ========================================================================= -->
+    <div class="modal fade" id="modalAuth" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-4 border-0 overflow-hidden">
+                <div class="modal-header border-0 text-center d-block position-relative" style="background: var(--yellow-cornsilk); border-bottom: 2px solid var(--yellow-naples) !important; padding: 1.6rem 1rem 1rem;">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal"></button>
+                    <!-- Ícono @ con orejitas de gato en tono #20331B -->
+                    <div class="mx-auto mb-2 d-flex align-items-center justify-content-center rounded-circle bg-white shadow-sm" style="width: 64px; height: 64px; border: 2px solid var(--green-primary);">
+                        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 24 L20 10 L30 18 C32 17.5 34 17.5 36 18 L46 10 L48 24" fill="#20331B"/>
+                            <circle cx="33" cy="35" r="18" stroke="#20331B" stroke-width="5.5" stroke-linecap="round"/>
+                            <circle cx="33" cy="35" r="7.5" stroke="#20331B" stroke-width="5"/>
+                            <path d="M40.5 28 V38 C40.5 41.5 43.5 43 46.5 41 C49.5 39 51 34 49 28" stroke="#20331B" stroke-width="5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h5 class="modal-title fw-bold" style="color: var(--green-deepest);">Acceso a Petly</h5>
+                    <small class="text-muted">Tienda de Mascotas La Yunta</small>
+                </div>
+
+                <div class="modal-body p-4">
+                    <ul class="nav nav-pills nav-fill mb-4 p-1 rounded-3" style="background: #f1f4ec;" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active rounded-3 fw-bold small" data-bs-toggle="pill" data-bs-target="#tabLogin" type="button">Iniciar Sesión</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link rounded-3 fw-bold small" data-bs-toggle="pill" data-bs-target="#tabRegistro" type="button">Crear Cuenta</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!-- PESTAÑA INICIAR SESIÓN -->
+                        <div class="tab-pane fade show active" id="tabLogin">
+                            <form id="formLogin" class="d-grid gap-3">
+                                <div>
+                                    <label class="form-label small fw-bold mb-1">Correo Electrónico</label>
+                                    <div class="custom-input-group">
+                                        <div class="custom-input-icon">
+                                            <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+                                                <path d="M18 24 L20 9 L30 18 H36 L46 9 L48 24" fill="#354C2B"/>
+                                                <circle cx="33" cy="35" r="17" stroke="#354C2B" stroke-width="6"/>
+                                                <circle cx="33" cy="35" r="7" stroke="#354C2B" stroke-width="5.5"/>
+                                            </svg>
+                                        </div>
+                                        <input type="email" id="loginEmail" placeholder="tucorreo@ejemplo.com" required>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="form-label small fw-bold mb-1">Contraseña</label>
+                                    <div class="custom-input-group">
+                                        <div class="custom-input-icon">
+                                            <i class="bi bi-key-fill"></i>
+                                        </div>
+                                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-petly-green w-100 mt-2">
+                                    Iniciar Sesión
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- PESTAÑA REGISTRO DE CLIENTE -->
+                        <div class="tab-pane fade" id="tabRegistro">
+                            <form id="formRegistro" class="d-grid gap-3">
+                                <div>
+                                    <label class="form-label small fw-bold mb-1">Nombre Completo *</label>
+                                    <div class="custom-input-group">
+                                        <div class="custom-input-icon">
+                                            <i class="bi bi-person-badge-fill"></i>
+                                        </div>
+                                        <input type="text" id="regNombre" placeholder="Nombre y Apellido" required>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="form-label small fw-bold mb-1">Correo Electrónico *</label>
+                                    <div class="custom-input-group">
+                                        <div class="custom-input-icon">
+                                            <svg width="22" height="22" viewBox="0 0 64 64" fill="none">
+                                                <path d="M18 24 L20 9 L30 18 H36 L46 9 L48 24" fill="#354C2B"/>
+                                                <circle cx="33" cy="35" r="17" stroke="#354C2B" stroke-width="6"/>
+                                                <circle cx="33" cy="35" r="7" stroke="#354C2B" stroke-width="5.5"/>
+                                            </svg>
+                                        </div>
+                                        <input type="email" id="regEmail" placeholder="tucorreo@ejemplo.com" required>
+                                    </div>
+                                </div>
+
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <label class="form-label small fw-bold mb-1">Teléfono *</label>
+                                        <div class="custom-input-group">
+                                            <div class="custom-input-icon"><i class="bi bi-telephone-fill"></i></div>
+                                            <input type="text" id="regTelefono" placeholder="300 000 0000" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label small fw-bold mb-1">Dirección (Toledo)</label>
+                                        <div class="custom-input-group">
+                                            <div class="custom-input-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                                            <input type="text" id="regDireccion" placeholder="Barrio / Vereda">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="form-label small fw-bold mb-1">Contraseña *</label>
+                                    <div class="custom-input-group">
+                                        <div class="custom-input-icon"><i class="bi bi-shield-lock-fill"></i></div>
+                                        <input type="password" id="regPassword" minlength="6" placeholder="Mínimo 6 caracteres" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-petly-yellow w-100 mt-2">
+                                    Registrarme en Petly
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- =========================================================================
+         LÓGICA DEL FRONTEND: PROMOCIONES, MÁS VENDIDOS, CANTIDADES Y CARRITO
+         ========================================================================= -->
+    <script>
+        const productosCatalogo = [
+            {
+                id_producto: 1,
+                id_categoria: 1,
+                nombre_producto: 'Concentrado Premium Adultos 10kg',
+                descripcion: 'Alimento balanceado rico en proteínas y vitaminas para perros adultos de todas las razas.',
+                precio: 98000,
+                precio_promocion: 89900,
+                en_promocion: true,
+                mas_vendido: true,
+                stock: 18,
+                icono: 'bi-bag-heart-fill'
+            },
+            {
+                id_producto: 2,
+                id_categoria: 1,
+                nombre_producto: 'Alimento Completo Gatos Salmón 3kg',
+                descripcion: 'Nutrición especial para el cuidado urinario y pelaje brillante en gatos adultos.',
+                precio: 46000,
+                precio_promocion: null,
+                en_promocion: false,
+                mas_vendido: true,
+                stock: 12,
+                icono: 'bi-box2-heart-fill'
+            },
+            {
+                id_producto: 3,
+                id_categoria: 2,
+                nombre_producto: 'Champú Dermatológico y Brillo 500ml',
+                descripcion: 'Fórmula suave con avena y aloe vera ideal para el baño regular de perros y gatos.',
+                precio: 24500,
+                precio_promocion: 21000,
+                en_promocion: true,
+                mas_vendido: false,
+                stock: 25,
+                icono: 'bi-droplet-half'
+            },
+            {
+                id_producto: 4,
+                id_categoria: 3,
+                nombre_producto: 'Kit Collar + Correa Ajustable Reforzada',
+                descripcion: 'Collar ergonómico acolchado con correa de alta resistencia para paseos seguros.',
+                precio: 35000,
+                precio_promocion: null,
+                en_promocion: false,
+                mas_vendido: true,
+                stock: 4,
+                icono: 'bi-award-fill'
+            },
+            {
+                id_producto: 5,
+                id_categoria: 4,
+                nombre_producto: 'Suplemento Multivitamínico Mascotas 120ml',
+                descripcion: 'Refuerzo de defensas, calcio y energía para mascotas en crecimiento o recuperación.',
+                precio: 32000,
+                precio_promocion: 28500,
+                en_promocion: true,
+                mas_vendido: false,
+                stock: 15,
+                icono: 'bi-capsule-pill'
+            }
+        ];
+
+        let carrito = JSON.parse(localStorage.getItem('petly_carrito')) || [];
+
+        window.cambiarVista = function(nombreVista) {
+            document.querySelectorAll('.vista-apartado').forEach(sec => sec.classList.remove('activa'));
+            document.getElementById('vista-' + nombreVista)?.classList.add('activa');
+
+            document.querySelectorAll('.nav-link-petly').forEach(link => link.classList.remove('active'));
+            document.getElementById('nav-' + nombreVista)?.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        function formatearCOP(valor) {
+            return '$' + Number(valor).toLocaleString('es-CO') + ' COP';
+        }
+
+        function mostrarAlerta(mensaje, tipo = 'success') {
+            const contenedor = document.getElementById('contenedorAlertas');
+            if (!contenedor) return;
+            contenedor.innerHTML = `
+                <div class="alert alert-${tipo} alert-dismissible fade show rounded-3 shadow-sm" role="alert">
+                    <i class="bi bi-check2-circle me-2"></i>${mensaje}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+        }
+
+        // Generar tarjeta de producto con etiquetas de Promoción / Más vendido y selector de cantidad
+        function crearTarjetaHTML(prod, prefijoId) {
+            const precioFinal = prod.en_promocion && prod.precio_promocion ? prod.precio_promocion : prod.precio;
+            const inputId = `qty-${prefijoId}-${prod.id_producto}`;
+
+            return `
+                <div class="col-sm-6 col-lg-4">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            ${prod.en_promocion ? '<span class="badge-promo"><i class="bi bi-tag-fill me-1"></i>PROMOCIÓN</span>' : ''}
+                            ${prod.mas_vendido ? '<span class="badge-bestseller"><i class="bi bi-star-fill me-1"></i>Más Vendido del Mes</span>' : ''}
+                            <span class="badge-stock">Stock: ${prod.stock}</span>
+                            <i class="bi ${prod.icono}" style="font-size: 3.6rem; color: var(--green-primary);"></i>
+                        </div>
+                        <div class="p-3 d-flex flex-column flex-grow-1">
+                            <h5 class="fw-bold mb-1" style="font-size: 1.08rem;">${prod.nombre_producto}</h5>
+                            <p class="text-muted small flex-grow-1 mb-2">${prod.descripcion}</p>
+                            <div class="mb-3">
+                                ${prod.en_promocion ? `<span class="price-old">${formatearCOP(prod.precio)}</span>` : ''}
+                                <span class="price-current">${formatearCOP(precioFinal)}</span>
+                            </div>
+
+                            <!-- Selector de Cantidad (- 1 +) -->
+                            <div class="d-flex align-items-center justify-content-between mb-3 pt-2 border-top">
+                                <span class="small fw-semibold text-muted">Cantidad:</span>
+                                <div class="qty-selector">
+                                    <button type="button" class="qty-btn" onclick="ajustarInputCantidad('${inputId}', -1, ${prod.stock})">-</button>
+                                    <input type="number" id="${inputId}" class="qty-input" value="1" min="1" max="${prod.stock}" readonly>
+                                    <button type="button" class="qty-btn" onclick="ajustarInputCantidad('${inputId}', 1, ${prod.stock})">+</button>
+                                </div>
+                            </div>
+
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-petly btn-sm w-50" onclick="verFichaProducto(${prod.id_producto})">
+                                    Ver ficha
+                                </button>
+                                <button class="btn btn-petly-green btn-sm w-50" onclick="agregarConCantidad(${prod.id_producto}, '${inputId}')">
+                                    <i class="bi bi-cart-plus me-1"></i>Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.ajustarInputCantidad = function(inputId, cambio, stockMax) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            let valorActual = parseInt(input.value) || 1;
+            let nuevoValor = valorActual + cambio;
+            if (nuevoValor < 1) nuevoValor = 1;
+            if (nuevoValor > stockMax) {
+                nuevoValor = stockMax;
+                mostrarAlerta(`Solo hay ${stockMax} unidades disponibles en inventario.`, 'warning');
+            }
+            input.value = nuevoValor;
+        };
+
+        // Filtrar el apartado de Promociones y Mejores Ventas en la página de Inicio
+        window.filtrarInicio = function(filtro, botonClick) {
+            if (botonClick) {
+                document.querySelectorAll('#tabsDestacadosInicio button').forEach(b => b.classList.remove('active'));
+                botonClick.classList.add('active');
+            }
+            const contInicio = document.getElementById('contenedorDestacadosInicio');
+            if (!contInicio) return;
+
+            let lista = productosCatalogo;
+            if (filtro === 'promociones') {
+                lista = productosCatalogo.filter(p => p.en_promocion);
+            } else if (filtro === 'mas_vendidos') {
+                lista = productosCatalogo.filter(p => p.mas_vendido);
+            } else {
+                lista = productosCatalogo.filter(p => p.en_promocion || p.mas_vendido).slice(0, 3);
+            }
+
+            contInicio.innerHTML = lista.map(p => crearTarjetaHTML(p, 'home')).join('');
+        };
+
+        function renderizarCatalogo(listaCatalogo = productosCatalogo) {
+            const contCatalogo = document.getElementById('contenedorProductos');
+            if (!contCatalogo) return;
+            if (listaCatalogo.length === 0) {
+                contCatalogo.innerHTML = `<div class="col-12 text-center py-5"><p class="text-muted">No se encontraron productos para esta búsqueda.</p></div>`;
+            } else {
+                contCatalogo.innerHTML = listaCatalogo.map(p => crearTarjetaHTML(p, 'cat')).join('');
+            }
+        }
+
+        window.verFichaProducto = function(idProducto) {
+            const prod = productosCatalogo.find(p => p.id_producto === idProducto);
+            if (!prod) return;
+            const precioFinal = prod.en_promocion && prod.precio_promocion ? prod.precio_promocion : prod.precio;
+            const modalInputId = `qty-modal-${prod.id_producto}`;
+
+            document.getElementById('detalleTitulo').textContent = prod.nombre_producto;
+            document.getElementById('detalleCuerpo').innerHTML = `
+                <div class="text-center mb-3 p-4 rounded-3" style="background: var(--yellow-cornsilk);">
+                    <i class="bi ${prod.icono}" style="font-size: 3.8rem; color: var(--green-primary);"></i>
+                </div>
+                <p class="text-muted">${prod.descripcion}</p>
+                <div class="d-flex justify-content-between align-items-center p-3 rounded-3 mb-3" style="background: #f4f6f0;">
+                    <span class="fw-semibold">Precio unitario:</span>
+                    <span class="fs-4 fw-bold" style="color: var(--green-deeper);">${formatearCOP(precioFinal)}</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <span class="fw-semibold small">Cantidad (Disponibles: ${prod.stock}):</span>
+                    <div class="qty-selector">
+                        <button type="button" class="qty-btn" onclick="ajustarInputCantidad('${modalInputId}', -1, ${prod.stock})">-</button>
+                        <input type="number" id="${modalInputId}" class="qty-input" value="1" min="1" max="${prod.stock}" readonly>
+                        <button type="button" class="qty-btn" onclick="ajustarInputCantidad('${modalInputId}', 1, ${prod.stock})">+</button>
+                    </div>
+                </div>
+                <button class="btn btn-petly-yellow w-100" onclick="agregarConCantidad(${prod.id_producto}, '${modalInputId}')" data-bs-dismiss="modal">
+                    <i class="bi bi-cart-plus me-1"></i> Agregar al Carrito
+                </button>
+            `;
+            new bootstrap.Modal(document.getElementById('modalDetalleProducto')).show();
+        };
+
+        window.agregarConCantidad = function(idProducto, inputId) {
+            const prod = productosCatalogo.find(p => p.id_producto === idProducto);
+            if (!prod) return;
+
+            const inputElem = document.getElementById(inputId);
+            const cantidadElegida = inputElem ? (parseInt(inputElem.value) || 1) : 1;
+
+            const itemExistente = carrito.find(item => item.id_producto === idProducto);
+            const precioFinal = prod.en_promocion && prod.precio_promocion ? prod.precio_promocion : prod.precio;
+
+            if (itemExistente) {
+                if (itemExistente.cantidad + cantidadElegida > prod.stock) {
+                    mostrarAlerta(`Superas el stock disponible (${prod.stock} unidades).`, 'warning');
+                    return;
+                }
+                itemExistente.cantidad += cantidadElegida;
+            } else {
+                carrito.push({
+                    id_producto: prod.id_producto,
+                    nombre: prod.nombre_producto,
+                    precio: precioFinal,
+                    stockMax: prod.stock,
+                    cantidad: cantidadElegida
+                });
+            }
+
+            if (inputElem) inputElem.value = 1;
+            actualizarVistaCarrito();
+            mostrarAlerta(`Se agregaron ${cantidadElegida} unidad(es) de "${prod.nombre_producto}" al carrito.`);
+        };
+
+        window.cambiarCantidadEnCarrito = function(indice, cambio) {
+            const item = carrito[indice];
+            if (!item) return;
+            const nuevaCant = item.cantidad + cambio;
+            if (nuevaCant <= 0) {
+                carrito.splice(indice, 1);
+            } else if (nuevaCant <= item.stockMax) {
+                item.cantidad = nuevaCant;
+            } else {
+                mostrarAlerta(`Stock máximo alcanzado (${item.stockMax} unidades).`, 'warning');
+            }
+            actualizarVistaCarrito();
+        };
+
+        function actualizarVistaCarrito() {
+            localStorage.setItem('petly_carrito', JSON.stringify(carrito));
+            const totalUnidades = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+            const totalPrecio = carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+
+            document.getElementById('contadorCarrito').textContent = totalUnidades;
+            document.getElementById('totalCarrito').textContent = formatearCOP(totalPrecio);
+
+            const contenedorLista = document.getElementById('listaCarrito');
+            if (carrito.length === 0) {
+                contenedorLista.innerHTML = `<p class="text-center text-muted my-4">Tu carrito de compras está vacío.</p>`;
+                return;
+            }
+
+            contenedorLista.innerHTML = carrito.map((item, idx) => `
+                <div class="d-flex flex-wrap justify-content-between align-items-center border-bottom py-3 gap-2">
+                    <div>
+                        <h6 class="fw-bold mb-0">${item.nombre}</h6>
+                        <small class="text-muted">${formatearCOP(item.precio)} c/u</small>
+                    </div>
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="qty-selector">
+                            <button class="qty-btn" onclick="cambiarCantidadEnCarrito(${idx}, -1)">-</button>
+                            <span class="px-2 fw-bold">${item.cantidad}</span>
+                            <button class="qty-btn" onclick="cambiarCantidadEnCarrito(${idx}, 1)">+</button>
+                        </div>
+                        <span class="fw-bold" style="color: var(--green-deeper); min-width: 105px; text-align: right;">
+                            ${formatearCOP(item.precio * item.cantidad)}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            filtrarInicio('todos');
+            renderizarCatalogo();
+            actualizarVistaCarrito();
+
+            const inputFecha = document.getElementById('citaFecha');
+            if (inputFecha) inputFecha.min = new Date().toISOString().split('T')[0];
+
+            document.getElementById('inputBuscador')?.addEventListener('input', (e) => {
+                const texto = e.target.value.toLowerCase();
+                const filtrados = productosCatalogo.filter(p =>
+                    p.nombre_producto.toLowerCase().includes(texto) ||
+                    p.descripcion.toLowerCase().includes(texto)
+                );
+                renderizarCatalogo(filtrados);
+            });
+
+            document.querySelectorAll('#filtrosCategorias button').forEach(boton => {
+                boton.addEventListener('click', () => {
+                    document.querySelectorAll('#filtrosCategorias button').forEach(b => b.classList.remove('active'));
+                    boton.classList.add('active');
+                    const cat = boton.getAttribute('data-categoria');
+                    if (cat === 'todas') renderizarCatalogo(productosCatalogo);
+                    else if (cat === 'promociones') renderizarCatalogo(productosCatalogo.filter(p => p.en_promocion));
+                    else if (cat === 'mas_vendidos') renderizarCatalogo(productosCatalogo.filter(p => p.mas_vendido));
+                    else renderizarCatalogo(productosCatalogo.filter(p => String(p.id_categoria) === cat));
+                });
+            });
+
+            document.getElementById('formAgendarCita')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const mascota = document.getElementById('citaNombreMascota').value;
+                const fecha = document.getElementById('citaFecha').value;
+                mostrarAlerta(`Cita registrada con éxito para ${mascota} el ${fecha}.`);
+                e.target.reset();
+            });
+        });
+    </script>
+</body>
+</html>
