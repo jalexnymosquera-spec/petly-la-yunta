@@ -1,0 +1,11 @@
+petly-la-yunta/.gitignore
+# 1. Proteger el archivo de contraseñas y credenciales de MySQL
+.env
+
+# 2. Ignorar la carpeta pesada de librerías que descarga Node.js
+node_modules/
+
+# 3. Ignorar archivos temporales del sistema operativo o del editor
+.DS_Store
+Thumbs.db
+*.log
